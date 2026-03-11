@@ -40,6 +40,7 @@ require (
 require (
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/gin-gonic/gin v1.12.0
+	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/joho/godotenv v1.5.1
 	github.com/mattn/go-isatty v0.0.20 // indirect
