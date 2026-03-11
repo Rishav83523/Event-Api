@@ -1,0 +1,1 @@
+ALTER TABLE attendees RENAME TO attendes;
