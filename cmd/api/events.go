@@ -96,6 +96,15 @@ func (app *application) updateEvent(c *gin.Context) {
 	c.JSON(http.StatusOK, updatedEvent)
 }
 
+//getEvents return all events
+//
+// @Summary Get all events
+// @Description Get a list of all events
+// @Tags events
+// @Accept json
+// @produce json
+// @Success 200 {object} []database.Event
+// @Router /api/v1/events [get]
 func (app *application) getAllEvents(c *gin.Context) { 
 	events, err := app.models.Events.GetAll()
 	if err != nil {

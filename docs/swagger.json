@@ -1,0 +1,79 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a simple REST API built with Go and Gin framework. It allows users to create, read, update, and delete events, as well as manage attendees for those events. The API also includes user authentication using JWT tokens.",
+        "title": "Go Gin Rest API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/v1/events": {
+            "get": {
+                "description": "Get a list of all events",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "events"
+                ],
+                "summary": "Get all events",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/database.Event"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "database.Event": {
+            "type": "object",
+            "required": [
+                "date",
+                "description",
+                "location",
+                "name"
+            ],
+            "properties": {
+                "date": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string",
+                    "minLength": 10
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "location": {
+                    "type": "string",
+                    "minLength": 3
+                },
+                "name": {
+                    "type": "string",
+                    "minLength": 3
+                },
+                "ownerId": {
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "description": "Enter your bearer token in the format **Bearer \u0026lt;token\u0026gt;**",
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}

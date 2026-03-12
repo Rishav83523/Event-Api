@@ -3,12 +3,22 @@ package main
 import (
 	"database/sql"
 	"log"
+	_ "rest-api/docs"
 	"rest-api/internal/database"
 	"rest-api/internal/env"
 
 	_ "github.com/joho/godotenv/autoload"
 	_ "modernc.org/sqlite"
 )
+
+//@title Go Gin Rest API
+//@version 1.0
+//@description This is a simple REST API built with Go and Gin framework. It allows users to create, read, update, and delete events, as well as manage attendees for those events. The API also includes user authentication using JWT tokens.
+
+// @SecurityDefinitions.apikey BearerAuth
+// @In header
+// @name Authorization
+// @description Enter your bearer token in the format **Bearer &lt;token&gt;**
 
 //autoload will automatically load the environment variables from the .env file when the application starts. This allows us to easily manage our configuration settings without hardcoding them into our code. We can access these environment variables using the env package we created earlier, which provides helper functions to retrieve string and integer values with default fallbacks.
 

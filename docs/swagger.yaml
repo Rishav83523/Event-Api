@@ -1,0 +1,56 @@
+definitions:
+  database.Event:
+    properties:
+      date:
+        type: string
+      description:
+        minLength: 10
+        type: string
+      id:
+        type: integer
+      location:
+        minLength: 3
+        type: string
+      name:
+        minLength: 3
+        type: string
+      ownerId:
+        type: integer
+    required:
+    - date
+    - description
+    - location
+    - name
+    type: object
+info:
+  contact: {}
+  description: This is a simple REST API built with Go and Gin framework. It allows
+    users to create, read, update, and delete events, as well as manage attendees
+    for those events. The API also includes user authentication using JWT tokens.
+  title: Go Gin Rest API
+  version: "1.0"
+paths:
+  /api/v1/events:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all events
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/database.Event'
+            type: array
+      summary: Get all events
+      tags:
+      - events
+securityDefinitions:
+  BearerAuth:
+    description: Enter your bearer token in the format **Bearer &lt;token&gt;**
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

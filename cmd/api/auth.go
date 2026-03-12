@@ -97,3 +97,13 @@ func (app *application) login(c *gin.Context) {
 	c.JSON(http.StatusOK, loginResponse{Token: tokenString, UserId: existingUser.Id})
 
 }
+
+
+func (app *application) getAllUsers(c *gin.Context) { 
+	users, err := app.models.Users.GetAll()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to retrieve users"})
+		return
+	}
+	c.JSON(http.StatusOK, users)
+}
